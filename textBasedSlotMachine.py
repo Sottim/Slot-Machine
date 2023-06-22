@@ -8,6 +8,22 @@ ROWS = 3
 COLUMNS = 3
 
 symbolsCount = {"A": 2, "B": 4, "C": 6, "D": 8}
+symbolsValue = {"A": 10, "B": 6, "C": 3, "D": 1}
+
+def check_win(colums, lines, bet, values):
+    winnings = 0
+    winningLines = []
+    for line in range(lines):
+        symbol = colums[0][line]
+        for colum in colums:
+            #checking if the symbols are same or not 
+            if symbol != colum[line]:
+                break
+        else: #if symbols are same, adjust the winning value according to their bet for the line
+            winnings += values[symbol] * bet
+            winningLines.append(line)
+    
+    return winnings, winningLines
 
 def spin_slot_machine(rows, colms, symbols):
     all_symbols = []
@@ -84,11 +100,7 @@ def get_bet():
             print("Invalid ! Input should be a number.")
     return amount
 
-
-
-
-def main():
-    totalBalance = deposit() #calling the function to update the balance
+def spin(totalBalance):
     lines = getNumberOfLines()
     # To check the current balance the player has.
     while True: #while the condition executes if block, run the loop till then.
@@ -102,6 +114,25 @@ def main():
 
     slots = spin_slot_machine(ROWS, COLUMNS, symbolsCount)
     print_slot_machine(slots)
+    winnings, winningLines = check_win(slots, lines, bet, symbolsValue)
+    print(f"You won ${winnings} on lines:", *winningLines)
+
+    return winnings - bet
+
+
+
+
+
+def main():
+    totalBalance = deposit() #calling the function to update the balance
+    while True:
+        print(f"Current balance is ${totalBalance}")
+        answer = input("Press enter to play and 'q' to quit") 
+        if answer == 'q':
+            break 
+        totalBalance += spin(totalBalance)
+    print(f"You are left with ${totalBalance}")
+
 
 main()
 
