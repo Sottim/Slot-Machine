@@ -124,7 +124,7 @@ def spin(totalBalance):
 
 
 def main():
-    totalBalance = deposit() #calling the function to update the balance
+    totalBalance = deposit() #calling the function to update the the balance 
     while True:
         print(f"Current balance is ${totalBalance}")
         answer = input("Press enter to play and 'q' to quit") 

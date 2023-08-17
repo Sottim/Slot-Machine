@@ -18,4 +18,4 @@ At any point, if you want to drop out of the game you can press 'q' to quit and 
 Press 'Enter' to continue playing.
 
 ## Plan:
-Over time, I would want to make the game more engaging by including the visual aspects to it and make more realistic taking the real life scenerio. Happy Coding!
+Over time, I would want to make the game more engaging by including the visual aspects to it and make more realistic taking the real life scenerio. Happy Coding !
